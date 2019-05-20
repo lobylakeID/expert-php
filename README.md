@@ -1,8 +1,12 @@
-## Welcome to GitHub Pages
+## Selamat datang di Expert PHP
+Framework PHP yang satu ini mengajarkan anda untuk membuat kode singkat dan jelas dan juga mudah untuk dipahami
+oleh orang-orang yang mempelajari program anda.
 
-You can use the [editor on GitHub](https://github.com/lobylakeID/expert-php/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Contoh kode 1(Setup routes):
+```markdown
+Route::get(['/', '/welcome', '/welcome/'], function(){
+  return load::controller('welcome');
+```
 
 ### Markdown
 
