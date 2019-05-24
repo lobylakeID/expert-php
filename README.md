@@ -11,9 +11,9 @@ Route::get(['/', '/welcome', '/welcome/'], function(){
 
 ### Contoh kode 2(Controller file):
 ```markdown
-use System\Base\Controller;
+use Sytem\Loader\Loader as load;
 
-class Hello extends Controller {
+class Hello {
 
   public function main(){
   
