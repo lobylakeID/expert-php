@@ -1,8 +1,9 @@
 <?php
 
-$_RES['strings'] = array(
-    'name' => 'Gede Dhanu Purnayasa',
-    'nickname' => 'dhanu',
-    'old' => 14,
-    'from' => 'Indonesia'
-);
+$_RES['strings'] = [
+
+    'author' => 'lobylake',
+    'package' => 'expert-php',
+    'version' => 1.0
+
+];

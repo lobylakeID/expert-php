@@ -4,7 +4,7 @@ namespace System\Loader;
 
 class Render {
 
-    protected static function _controller_render(bool $status, string $file_path='', string $class_name='', string $method_name=''){
+    protected static function _controller_render(bool $status, string $file_path='', string $class_name='', string $method_name='', array $param=[]){
 
         if($status !== false){
 
@@ -16,7 +16,7 @@ class Render {
 
                 if(method_exists($obj, $method_name)){
 
-                    $obj->$method_name();
+                    $obj->$method_name($param);
 
                 }
 
@@ -83,5 +83,41 @@ class Render {
         }
 
     }
+
+    protected static function _class_render(string $sys_path, string $app_path, string $class_name){
+
+        $sys_exists = file_exists($sys_path);
+        $app_exists = file_exists($app_path);
+
+        if($sys_exists && $app_exists){
+
+            include $sys_path;
+            include $app_path;
+
+            $class_name = 'EXT_'.$class_name;
+
+            return class_exists($class_name) ? new $class_name() : null;
+
+        }else if($sys_exists){
+
+            include $sys_path;
+
+            return class_exists($class_name) ? new $class_name() : null;
+
+        }else if($app_exists){
+
+            include $app_path;
+
+            return class_exists($class_name) ? new $class_name() : null;
+
+        }else{
+
+            echo "Class not found!";
+
+        }
+
+    }   
+
+    protected static function _
 
 }

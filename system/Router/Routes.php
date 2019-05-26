@@ -26,7 +26,7 @@ class Route implements iRoutes {
 
     }
 
-    private function _get_from_uri_render(){
+    private static function _get_from_uri_render(){
 
         $uri = $_SERVER['REQUEST_URI'];
 
@@ -40,6 +40,9 @@ class Route implements iRoutes {
 
                 $get = explode('=', $data[$i]);
 
+                if(!isset($get[1])){
+                    $get[1] = '';
+                }
                 $_GET[$get[0]] = $get[1];
 
             }
@@ -68,6 +71,8 @@ class Route implements iRoutes {
 
                     self::$logic_result = true;
 
+                    exit;
+
                     break;
 
                 }else{
@@ -87,6 +92,8 @@ class Route implements iRoutes {
                     $action();
 
                     self::$logic_result = true;
+
+                    exit;
 
                     break;
 
@@ -122,9 +129,4 @@ for($i = 2; $i < count($dir); $i++){
 
 }
 
-/*use System\Router\Route;
-if(Route::$logic_result < 1){
-
-    include SYSPATH. '/Router/404.php';
-
-}*/
+include SYSPATH. '/Router/404.php';

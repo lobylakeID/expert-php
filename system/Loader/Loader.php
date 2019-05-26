@@ -7,7 +7,7 @@ require SYSPATH . '/Loader/LoaderRenderMethod.php';
 
 class Loader extends \System\Loader\Render {
 
-    public static function controller(string $file_name='', string $index_method_name='index'){
+    public static function controller(string $file_name='', string $index_method_name='index', array $param=[]){
 
         $class_name = ucfirst($file_name);
         $file_name.='.php';
@@ -15,7 +15,7 @@ class Loader extends \System\Loader\Render {
 
         if(file_exists($file_path)){
 
-            return parent::_controller_render(true, $file_path, $class_name, $index_method_name);
+            return parent::_controller_render(true, $file_path, $class_name, $index_method_name, $param);
 
         }else{
 
@@ -59,7 +59,12 @@ class Loader extends \System\Loader\Render {
     }
     public static function class(string $file_name=''){
 
+        $sys_file_path = SYSPATH. '/Class/' . $file_name . '.php';
+        $app_file_path = APPPATH. '/class/' . $file_name . '.php';
 
+        $class_name = ucfirst($file_name);
+
+        return parent::_class_render($sys_file_path, $app_file_path, $class_name);
 
     }
     public static function function(string $file_name){
