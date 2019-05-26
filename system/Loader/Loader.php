@@ -69,7 +69,10 @@ class Loader extends \System\Loader\Render {
     }
     public static function function(string $file_name){
 
+        $sys_file_path = SYSPATH. '/Function/' . $file_name . '.php';
+        $app_file_path = APPPATH. '/function/' . $file_name . '.php';
 
+        return parent::_function_render($sys_file_path, $app_file_path);
 
     }
     public static function resource(string $path='@/'){

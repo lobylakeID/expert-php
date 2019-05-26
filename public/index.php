@@ -73,6 +73,10 @@ require SYSPATH. '/Database/Database.php';
 
 include SYSPATH. '/Updater/Updater.php';
 
+require SYSPATH. '/Autowork/Autowork.php';
+
+require SYSPATH. '/Loader/Loader.php';
+
 /**
  * ------------------------------------------------------------
  * SYSTEM RENDERING WEB PAGES AND CONFIGS
@@ -85,6 +89,8 @@ include SYSPATH. '/Updater/Updater.php';
  * @author lobylake
  * @package expert-php
  */
-require SYSPATH. '/Loader/Loader.php';
+
 require SYSPATH. '/Post/PostFunction.php';
+require APPPATH. '/autoworks/before.php';
 require SYSPATH. '/Router/Routes.php';
+require APPPATH. '/autoworks/after.php';

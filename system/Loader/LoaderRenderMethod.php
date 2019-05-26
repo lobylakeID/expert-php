@@ -96,19 +96,21 @@ class Render {
 
             $class_name = 'EXT_'.$class_name;
 
-            return class_exists($class_name) ? new $class_name() : null;
+            return class_exists($class_name) ? new $class_name() : 0;
 
         }else if($sys_exists){
 
             include $sys_path;
 
-            return class_exists($class_name) ? new $class_name() : null;
+            $class_name = 'SYS_';
+
+            return class_exists($class_name) ? new $class_name() : 0;
 
         }else if($app_exists){
 
             include $app_path;
 
-            return class_exists($class_name) ? new $class_name() : null;
+            return class_exists($class_name) ? new $class_name() : 0;
 
         }else{
 
@@ -118,6 +120,30 @@ class Render {
 
     }   
 
-    protected static function _
+    protected static function _function_render(string $sys_path, string $app_path){
+
+        $sys_exists = file_exists($sys_path);
+        $app_exists = file_exists($app_path);
+
+        if($sys_exists && $app_exists){
+
+            include $sys_path;
+            return include $app_path;
+
+        }else if($sys_exists){
+
+            return include $sys_path;
+
+        }else if($app_exists){
+
+            return include $app_path;
+
+        }else{
+
+            echo "File not found!";
+
+        }
+
+    }
 
 }
